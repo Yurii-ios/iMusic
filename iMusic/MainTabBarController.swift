@@ -19,7 +19,9 @@ class MainTabBarController: UITabBarController {
         
         //
         let navigationVC = UINavigationController(rootViewController: searchVC)
-        
+        // ystanawliwaem izobraz
+        navigationVC.tabBarItem.image = #imageLiteral(resourceName: "search")
+        navigationVC.tabBarItem.title = "Search"
         // dobawliaem kontrolleru kotorue mu chotim videt w tab bare
         viewControllers = [navigationVC, libraryVC]
     }
