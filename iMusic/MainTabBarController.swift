@@ -13,16 +13,21 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         view.backgroundColor = .yellow
-        
-        let searchVC = SearchViewController()
-        let libraryVC = ViewController()
-        
-        //
-        let navigationVC = UINavigationController(rootViewController: searchVC)
-        // ystanawliwaem izobraz
-        navigationVC.tabBarItem.image = #imageLiteral(resourceName: "search")
-        navigationVC.tabBarItem.title = "Search"
+       
         // dobawliaem kontrolleru kotorue mu chotim videt w tab bare
-        viewControllers = [navigationVC, libraryVC]
+        viewControllers = [generateViewController(rootViewController: SearchViewController(), image: #imageLiteral(resourceName: "search"), title: "Search"), generateViewController(rootViewController: ViewController(), image: #imageLiteral(resourceName: "library"), title: "Library")]
+    }
+    
+    private func generateViewController (rootViewController: UIViewController, image: UIImage, title: String) -> UIViewController {
+        
+        let navigationVC = UINavigationController(rootViewController: rootViewController)
+        // ystanawliwaem izobraz dlia knopki tabBara
+        navigationVC.tabBarItem.image = image
+        navigationVC.tabBarItem.title = title
+        rootViewController.navigationItem.title = title
+        // delaem bar bolshum
+        navigationVC.navigationBar.prefersLargeTitles = true
+        
+        return navigationVC
     }
 }
