@@ -12,6 +12,13 @@ struct TrackModel {
     var artistName: String
 }
 
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+}
+
 class SearchViewController: UITableViewController {
     
     // chranit wse treki kotorue imeem
@@ -31,6 +38,7 @@ class SearchViewController: UITableViewController {
     private func setupSearchBar() {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.searchBar.delegate = self
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,3 +55,4 @@ class SearchViewController: UITableViewController {
         return cell
     }
 }
+
