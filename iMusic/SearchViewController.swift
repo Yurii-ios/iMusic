@@ -26,6 +26,15 @@ extension SearchViewController: UISearchBarDelegate {
             }
             
             guard let data = dataResponse.data else { return }
+            // decodiryem dannue
+            let decoder = JSONDecoder()
+            do {
+                let objects = try decoder.decode(SearchResponse.self, from: data)
+                print(objects)
+            } catch let error {
+                print(error.localizedDescription)
+                
+            }
             
             let someString = String(data: data, encoding: String.Encoding.utf8)
             print("This is my string: \(someString ?? "Empty string")")
