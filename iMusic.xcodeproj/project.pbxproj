@@ -16,6 +16,7 @@
 		F128475A251CFC3300BCE2F4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */; };
 		F128475E251D1C1B00BCE2F4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F128475D251D1C1B00BCE2F4 /* SearchViewController.swift */; };
 		F142776E251F64B500FC1BC2 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142776D251F64B500FC1BC2 /* SearchResponse.swift */; };
+		F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3E62520EE260088FE50 /* NetworkService.swift */; };
 		FAE358A3E8F3379CA0C73D97 /* Pods_iMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD145DD36B38C3AC252679CC /* Pods_iMusic.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F128475D251D1C1B00BCE2F4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F142776D251F64B500FC1BC2 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		F148F3E62520EE260088FE50 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				F1284748251CFAEA00BCE2F4 /* ViewController.swift */,
 				F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */,
 				F128475D251D1C1B00BCE2F4 /* SearchViewController.swift */,
+				F148F3E62520EE260088FE50 /* NetworkService.swift */,
 				F142776D251F64B500FC1BC2 /* SearchResponse.swift */,
 				F128474A251CFAEA00BCE2F4 /* Main.storyboard */,
 				F128474D251CFAEB00BCE2F4 /* Assets.xcassets */,
@@ -220,6 +223,7 @@
 				F1284745251CFAEA00BCE2F4 /* AppDelegate.swift in Sources */,
 				F128475A251CFC3300BCE2F4 /* MainTabBarController.swift in Sources */,
 				F1284747251CFAEA00BCE2F4 /* SceneDelegate.swift in Sources */,
+				F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
