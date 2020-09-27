@@ -13,7 +13,7 @@ struct TrackModel {
     var artistName: String
 }
 
-extension SearchViewController: UISearchBarDelegate {
+extension SearchMusicViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         timer?.invalidate()
@@ -28,7 +28,7 @@ extension SearchViewController: UISearchBarDelegate {
         })
     }
 }
-class SearchViewController: UITableViewController {
+class SearchMusicViewController: UITableViewController {
     
     private var timer: Timer?
     var networkSerice = NetworkService()
