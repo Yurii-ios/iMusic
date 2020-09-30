@@ -7,7 +7,7 @@
 //
 
 
-//otve4aet za legaciju mezdy razli4numi modyliami, ekranami
+//otve4aet za navigaciju mezdy razli4numi modyliami, ekranami
 import UIKit
 
 protocol SearchViewControllerRoutingLogic {

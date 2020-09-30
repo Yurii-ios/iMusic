@@ -18,18 +18,12 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
   var interactor: SearchViewControllerBusinessLogic?
   var router: (NSObjectProtocol & SearchViewControllerRoutingLogic)?
 
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
+    @IBOutlet var table: UITableView!
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    private var searchViewModel = SearchViewModel(cells: [])
+    private var timer: Timer?
+    
   // MARK: Setup
   
   private func setup() {
@@ -52,10 +46,66 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setup()
+    setupSearchBar()
+    setupTableView()
   }
+    
+    private func setupSearchBar() {
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        // pozwoliaet ne zatemniatsia ekranu kogda mu wwodim 4toto w bare
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
+    // registriruem ja4ejky
+    private func setupTableView() {
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+    }
   
   func displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData) {
-
+    switch viewModel {
+   
+    case .some:
+        print("view some")
+    case .displayTracks(let searchViewModel):
+        self.searchViewModel = searchViewModel
+        table.reloadData()
+        print("view displayTracks")
+    }
   }
   
+}
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
+
+extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchViewModel.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = table.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+        
+        let cellViewModel = searchViewModel.cells[indexPath.row]
+        cell.textLabel?.text = cellViewModel.trackName + "\n" + cellViewModel.artistName
+        cell.textLabel?.numberOfLines = 2
+        cell.imageView?.image = #imageLiteral(resourceName: "Image")
+        return cell
+    }
+    
+    
+}
+
+extension SearchViewControllerViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self]
+            (_) in
+            self?.interactor?.makeRequest(request: SearchViewController.Model.Request.RequestType.getTrack(searchTerm: searchText))
+        })
+    }
 }
