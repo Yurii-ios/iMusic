@@ -37,11 +37,12 @@ enum SearchViewController {
 // sozdaem model dannuch kotoraja otnositsia k danomy modyly i ekrany, gde bydem chranit tolko to 4to nam nado
 
 struct SearchViewModel {
-    struct Cell {
-        var iconUrlString: String
+    struct Cell: TrackCellWiewModel {
+        var iconUrlString: String?
         var trackName: String
         var collectionName: String
         var artistName: String
+        var previewUrl: String?
     }
     
     let cells: [Cell]
