@@ -25,11 +25,10 @@ class SearchViewControllerInteractor: SearchViewControllerBusinessLogic {
         }
         
         switch request {
-        
-        case .some:
-            print("Some")
         case .getTrack(let searchTerm):
             print("getTracks")
+            presenter?.presentData(response: SearchViewController.Model.Response.ResponseType.presentFooterView)
+            
             // peredaem stroky s poiskom w func setewogo zaprosa
             networkServices.fetchTracks(searchText: searchTerm) { [weak self] (searchResponce) in
                 // peredaem dannue dlia ich podgotowki

@@ -15,20 +15,19 @@ enum SearchViewController {
   enum Model {
     struct Request {
       enum RequestType {
-        case some
         case getTrack(searchTerm: String)
       }
     }
     struct Response {
       enum ResponseType {
-        case some
         case presentTracks(searchResponce: SearchResponse?)
+        case presentFooterView
       }
     }
     struct ViewModel {
       enum ViewModelData {
-        case some
         case displayTracks(searchViewModel: SearchViewModel)
+        case displayFooterView
       }
     }
   }

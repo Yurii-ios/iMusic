@@ -24,6 +24,9 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
     private var searchViewModel = SearchViewModel(cells: [])
     private var timer: Timer?
     
+    private lazy var footerView = FooterView()
+    
+    
   // MARK: Setup
   
   private func setup() {
@@ -64,7 +67,7 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
         // yberaem na pystom ekrane poloski
-        table.tableFooterView = UIView()
+        table.tableFooterView = footerView
         
         let nib = UINib(nibName: "TrackCell", bundle: nil)
         // registriruem cell xib
@@ -73,13 +76,13 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
   
   func displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData) {
     switch viewModel {
-   
-    case .some:
-        print("view some")
     case .displayTracks(let searchViewModel):
         self.searchViewModel = searchViewModel
         table.reloadData()
+        footerView.hideLoader()
         print("view displayTracks")
+    case .displayFooterView:
+        footerView.showLoader()
     }
   }
   
