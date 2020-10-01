@@ -106,6 +106,16 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellViewModel = searchViewModel.cells[indexPath.row ]
+        
+        // tekys4ee okno
+        let window = UIApplication.shared.keyWindow
+        
+        let trackDetailsView = Bundle.main.loadNibNamed("TrackDetailView", owner: self, options: nil)?.first as! TrackDetailView
+        window?.addSubview(trackDetailsView)
+    }
+    
     // ystanawlivaem konstantnyju weli4iny dlia ja4ejki
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
