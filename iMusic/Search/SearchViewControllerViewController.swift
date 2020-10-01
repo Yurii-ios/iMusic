@@ -115,6 +115,11 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         return label
     }
+    // metod otwe4aet za wusoty header
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // skruwaem label kogda pojawliajutsia rezyltatu poiska
+        return searchViewModel.cells.count > 0 ? 0 : 250
+    }
 }
 
 //MARK: - UISearchBarDelegane
