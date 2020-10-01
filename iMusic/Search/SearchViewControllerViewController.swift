@@ -63,6 +63,9 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
     private func setupTableView() {
         table.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
         
+        // yberaem na pystom ekrane poloski
+        table.tableFooterView = UIView()
+        
         let nib = UINib(nibName: "TrackCell", bundle: nil)
         // registriruem cell xib
         table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
@@ -93,7 +96,7 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
         let cell = table.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
         
         let cellViewModel = searchViewModel.cells[indexPath.row]
-        print(cellViewModel.previewUrl)
+        print(cellViewModel.previewUrl!)
         cell.trackImageView.backgroundColor = .red
         cell.set(viewModel: cellViewModel)
     
@@ -104,7 +107,17 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.text = "Please enter search ..."
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        return label
+    }
 }
+
+//MARK: - UISearchBarDelegane
 
 extension SearchViewControllerViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
