@@ -26,15 +26,26 @@ class TrackDetailView: UIView {
         return avPlayer
     }()
     
-    override class func awakeFromNib() {
+    //MARK: - awakeFromNib
+    
+    override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let scale: CGFloat = 0.8
+        // ymenshaem razmer zagryzenogo image
+        trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        // raokrygliaem kraja image
+        trackImageView.layer.cornerRadius = 5
     }
+    
+    //MARK: - Setup
     
     //zagryzaem wse UI elementu
     func set(viewModel: SearchViewModel.Cell) {
         trackTitleLabel.text = viewModel.trackName
         authorTitleLabel.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
+        monitorStartTime()
         
         // izmeniaem razmer izobrazenija
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
@@ -52,13 +63,46 @@ class TrackDetailView: UIView {
         player.play()
     }
     
+    //MARK: - Time Setup
+    
+    private func monitorStartTime() {
+        // stryktyra kotoraja pozwoliaet otslezuwat wremia
+        let time = CMTimeMake(value: 1, timescale: 3)
+        // pomes4aem time w masiw
+        let times = [NSValue(time: time)]
+        // otslezuwaem moment proigruwanija treka dlia izmenenija razmera image
+        player.addBoundaryTimeObserver(forTimes: times, queue: DispatchQueue.main) { [weak self] in
+            // 4to wupolnitsia kogda danuj moment bydet otslezen
+            self?.enlargeTrackImageView()
+        }
+    }
+    
+    //MARK: - Animation
+    
+    private func enlargeTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            //yweli4iwaem razmer image
+            self.trackImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func reduceTrackImageView() {
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: .curveEaseInOut, animations: {
+            let scale: CGFloat = 0.8
+            // ymenshaem razmer zagryzenogo image
+            self.trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: nil)
+    }
+    
+    //MARK: - @IBActions8
+    
     @IBAction func handleCurrentTimeSlider(_ sender: Any) {
         
     }
     @IBAction func handleVolumeSlider(_ sender: Any) {
     }
     @IBAction func dragDownButtonTapped(_ sender: Any) {
-      // udaliaem view
+        // udaliaem view
         self.removeFromSuperview()
     }
     @IBAction func previousTrack(_ sender: Any) {
@@ -70,9 +114,11 @@ class TrackDetailView: UIView {
         if player.timeControlStatus == .paused {
             player.play()
             playPayseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
+            enlargeTrackImageView()
         } else {
             player.pause()
             playPayseButton.setImage(#imageLiteral(resourceName: "play"), for: UIControl.State.normal)
+            reduceTrackImageView()
         }
     }
 }

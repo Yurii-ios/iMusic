@@ -49,6 +49,9 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    //zagryzka rezyltatow po ymol4aniju
+    searchBar(searchController.searchBar, textDidChange: "Sond")
     setup()
     setupSearchBar()
     setupTableView()
