@@ -46,6 +46,7 @@ class TrackDetailView: UIView {
         authorTitleLabel.text = viewModel.artistName
         playTrack(previewUrl: viewModel.previewUrl)
         monitorStartTime()
+        observePlayerCurrentTime()
         
         // izmeniaem razmer izobrazenija
         let string600 = viewModel.iconUrlString?.replacingOccurrences(of: "100x100", with: "600x600")
@@ -74,6 +75,19 @@ class TrackDetailView: UIView {
         player.addBoundaryTimeObserver(forTimes: times, queue: DispatchQueue.main) { [weak self] in
             // 4to wupolnitsia kogda danuj moment bydet otslezen
             self?.enlargeTrackImageView()
+        }
+    }
+    
+    private func observePlayerCurrentTime() {
+        let interval = CMTimeMake(value: 1, timescale: 2)
+        player.addPeriodicTimeObserver(forInterval: interval, queue: .main) { [weak self] (time) in
+            self?.currentTimeLabel.text = time.toDisplayString()
+            
+            // obs4ee wremia kompozicui
+            let durationTime = self?.player.currentItem?.duration
+            // ostawcheesia wremia
+            let currentDuration = ((durationTime ?? CMTimeMake(value: 1, timescale: 1)) - time).toDisplayString()
+            self?.durationLabel.text = "-\(currentDuration)"
         }
     }
     
