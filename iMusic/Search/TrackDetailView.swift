@@ -32,6 +32,7 @@ class TrackDetailView: UIView {
     }()
     
     weak var delegate: TrackMovingDelegate?
+    weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     //MARK: - awakeFromNib
     
@@ -142,8 +143,9 @@ class TrackDetailView: UIView {
         player.volume = volumeSlider.value
     }
     @IBAction func dragDownButtonTapped(_ sender: Any) {
+        self.tabBarDelegate?.minimizeTrackDetailController()
         // udaliaem view
-        self.removeFromSuperview()
+        //self.removeFromSuperview()
     }
     @IBAction func previousTrack(_ sender: Any) {
         let cellViewModel = delegate?.moveBackForPreviousTrack()

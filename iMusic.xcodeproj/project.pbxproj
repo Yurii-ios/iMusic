@@ -29,6 +29,7 @@
 		F150A1CC2526577F0003A04B /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150A1CB2526577F0003A04B /* TrackDetailView.xib */; };
 		F150A1CF252657940003A04B /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150A1CE252657940003A04B /* TrackDetailView.swift */; };
 		F198D43625225BFC00A4263E /* SearchViewControllerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F148F40B252121850088FE50 /* SearchViewControllerViewController.storyboard */; };
+		F1DB6BE0252B9A7C007C9933 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB6BDF252B9A7C007C9933 /* Nib.swift */; };
 		F1F7CA1C252511DF0090BFBB /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F7CA1B252511DF0090BFBB /* TrackCell.xib */; };
 		F1F7CA1F252512110090BFBB /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7CA1E252512110090BFBB /* TrackCell.swift */; };
 		FAE358A3E8F3379CA0C73D97 /* Pods_iMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD145DD36B38C3AC252679CC /* Pods_iMusic.framework */; };
@@ -62,6 +63,7 @@
 		F150A1C225261A380003A04B /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		F150A1CB2526577F0003A04B /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		F150A1CE252657940003A04B /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
+		F1DB6BDF252B9A7C007C9933 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		F1F7CA1B252511DF0090BFBB /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		F1F7CA1E252512110090BFBB /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,6 +165,7 @@
 			children = (
 				F148F411252129630088FE50 /* UIViewController + Storyboard.swift */,
 				F14A278B252A003B009A39FC /* CMTime+Extension.swift */,
+				F1DB6BDF252B9A7C007C9933 /* Nib.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				F148F40725211C3F0088FE50 /* SearchViewControllerViewController.swift in Sources */,
 				F150A1C325261A380003A04B /* FooterView.swift in Sources */,
 				F1F7CA1F252512110090BFBB /* TrackCell.swift in Sources */,
+				F1DB6BE0252B9A7C007C9933 /* Nib.swift in Sources */,
 				F148F40325211C3F0088FE50 /* SearchViewControllerPresenter.swift in Sources */,
 				F148F40525211C3F0088FE50 /* SearchViewControllerRouter.swift in Sources */,
 				F1284745251CFAEA00BCE2F4 /* AppDelegate.swift in Sources */,
