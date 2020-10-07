@@ -25,6 +25,7 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
     private var timer: Timer?
     
     private lazy var footerView = FooterView()
+    weak var tabBardelegate: MainTabBarControllerDelegate?
     
     
   // MARK: Setup
@@ -112,13 +113,9 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cellViewModel = searchViewModel.cells[indexPath.row ]
         
-        // tekys4ee okno
-        let window = UIApplication.shared.keyWindow
+        self.tabBardelegate?.maximizeTrackDetailController(viewModel: cellViewModel)
         
-        let trackDetailsView: TrackDetailView = TrackDetailView.loadFromNib()
-        trackDetailsView.delegate = self
-        trackDetailsView.set(viewModel: cellViewModel)
-        window?.addSubview(trackDetailsView)
+        
     }
     
     // ystanawlivaem konstantnyju weli4iny dlia ja4ejki
