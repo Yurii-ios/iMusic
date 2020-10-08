@@ -28,7 +28,7 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .white
         setupTrackDetailView()
         
-        //searchVC.tabBardelegate = self
+        searchVC?.tabBardelegate = self
         
         // meniaem cvet  knopok tabBara
         tabBar.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.3764705882, alpha: 1)
@@ -64,7 +64,6 @@ class MainTabBarController: UITabBarController {
         // view.addSubview(trackDetailView)
         // tabbar powerch view
         view.insertSubview(trackDetailView, belowSubview: tabBar)
-        
         // use auto layout
         trackDetailView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -84,15 +83,16 @@ extension MainTabBarController: MainTabBarControllerDelegate {
     func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?) {
         
         maximizedTopAnchorConstraint.isActive = true
-        maximizedTopAnchorConstraint.constant = 0
         minimizedTopAnchorConstraint.isActive = false
-        
+        maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseInOut) {
             // obnowliaem view kazdyjy milisec 4tobu ywidet animacujy pri swora4iwanii view do minim sostojanija
             self.view.layoutIfNeeded()
             self.tabBar.alpha = 0
+            self.trackDetailView.miniTrackView.alpha = 0
+            self.trackDetailView.maximizedStackView.alpha = 1
         } completion: { (_) in
             
         }
@@ -101,7 +101,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         self.trackDetailView.set(viewModel: viewModel)
 
         // peredwigaem tabBar na zadanue koordnatu
-        self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+       self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
     }
     
     func minimizeTrackDetailController() {
@@ -115,7 +115,8 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseInOut) {
             // obnowliaem view kazdyjy milisec 4tobu ywidet animacujy pri swora4iwanii view do minim sostojanija
             self.view.layoutIfNeeded()
-            
+            self.trackDetailView.miniTrackView.alpha = 1
+            self.trackDetailView.maximizedStackView.alpha = 0
             self.tabBar.alpha = 1
         } completion: { (_) in
             
