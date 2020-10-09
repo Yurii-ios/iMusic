@@ -81,9 +81,8 @@ class MainTabBarController: UITabBarController {
 
 extension MainTabBarController: MainTabBarControllerDelegate {
     func maximizeTrackDetailController(viewModel: SearchViewModel.Cell?) {
-        
-        maximizedTopAnchorConstraint.isActive = true
         minimizedTopAnchorConstraint.isActive = false
+        maximizedTopAnchorConstraint.isActive = true
         maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
         
@@ -99,9 +98,9 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         
         guard let viewModel = viewModel else { return }
         self.trackDetailView.set(viewModel: viewModel)
-
+        
         // peredwigaem tabBar na zadanue koordnatu
-       self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+        self.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
     }
     
     func minimizeTrackDetailController() {

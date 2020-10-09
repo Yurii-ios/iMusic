@@ -64,6 +64,9 @@ class TrackDetailView: UIView {
         
         miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximized)))
         miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
+        
+        // swaip w niz
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismissPan)))
     }
     
     @objc private func handleTapMaximized() {
@@ -121,6 +124,27 @@ class TrackDetailView: UIView {
             
         }
 
+    }
+    
+    @objc private func handleDismissPan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .changed:
+            let translation = gesture.translation(in: self.superview)
+            maximizedStackView.transform = CGAffineTransform(translationX: 0, y: translation.y )
+        case .ended:
+            let translation = gesture.translation(in: self.superview)
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseInOut) {
+                self.maximizedStackView.transform = .identity
+                if translation.y > 50 {
+                    self.tabBarDelegate?.minimizeTrackDetailController()
+                }
+            } completion: { (_) in
+                
+            }
+
+        @unknown default:
+            print("default")
+        }
     }
     
     //MARK: - Setup
