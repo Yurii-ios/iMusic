@@ -51,6 +51,76 @@ class TrackDetailView: UIView {
         trackImageView.transform = CGAffineTransform(scaleX: scale, y: scale)
         // raokrygliaem kraja image
         trackImageView.layer.cornerRadius = 5
+        
+        // ymenshaem knopky play-pause w mini view
+        miniPlayPauseButton.imageEdgeInsets = .init(top: 11, left: 11, bottom: 11, right: 11)
+        
+        setupGestures()
+    }
+    
+    //MARK: - Gestures 
+    // realizowuwaem żestu
+    private func setupGestures() {
+        
+        miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximized)))
+        miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
+    }
+    
+    @objc private func handleTapMaximized() {
+        self.tabBarDelegate?.maximizeTrackDetailController(viewModel: nil)
+    }
+    
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .possible:
+            print("possible")
+        case .began:
+            print("began")
+        case .changed:
+            print("changed")
+            handlePanChanged(gesture: gesture)
+        case .ended:
+            print("ended")
+            handlePanEnded(gesture: gesture)
+        case .cancelled:
+            print("cancelled")
+        case .failed:
+            print("failed")
+        @unknown default:
+            print("default")
+        }
+    }
+    
+    private func handlePanChanged(gesture: UIPanGestureRecognizer) {
+        // logika dwigenija palcem
+        let tranclation = gesture.translation(in: self.superview)
+        self.transform = CGAffineTransform(translationX: 0, y: tranclation.y)
+        
+        let newAlpha = 1 + tranclation.y / 200
+        self.miniTrackView.alpha = newAlpha < 0 ? 0 : newAlpha
+        self.maximizedStackView.alpha = -tranclation.y / 200
+    }
+    
+    private func handlePanEnded(gesture: UIPanGestureRecognizer) {
+        // 4ast ekrana
+        let translation = gesture.translation(in: self.superview)
+        // skorost
+        let velocity = gesture.velocity(in: self.superview)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut) {
+            // 4tobu posle swaipa wwerch kogda is4ezaei miniView view kotoroe pojawliaetsia zapolnialo wes ekran
+            self.transform = .identity
+            //rastojanie na kotoroe podniat miniPlayer
+            if translation.y < -200 || velocity.y < -500 {
+                self.tabBarDelegate?.maximizeTrackDetailController(viewModel: nil)
+            } else {
+                self.miniTrackView.alpha = 1
+                self.maximizedStackView.alpha = 0
+            }
+        } completion: { (_) in
+            
+        }
+
     }
     
     //MARK: - Setup
