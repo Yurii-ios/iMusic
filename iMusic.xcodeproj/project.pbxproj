@@ -28,6 +28,7 @@
 		F150A1C325261A380003A04B /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150A1C225261A380003A04B /* FooterView.swift */; };
 		F150A1CC2526577F0003A04B /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150A1CB2526577F0003A04B /* TrackDetailView.xib */; };
 		F150A1CF252657940003A04B /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150A1CE252657940003A04B /* TrackDetailView.swift */; };
+		F1800AAF2531B13E0035C296 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1800AAE2531B13E0035C296 /* Library.swift */; };
 		F198D43625225BFC00A4263E /* SearchViewControllerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F148F40B252121850088FE50 /* SearchViewControllerViewController.storyboard */; };
 		F1DB6BE0252B9A7C007C9933 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB6BDF252B9A7C007C9933 /* Nib.swift */; };
 		F1F7CA1C252511DF0090BFBB /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F7CA1B252511DF0090BFBB /* TrackCell.xib */; };
@@ -63,6 +64,7 @@
 		F150A1C225261A380003A04B /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
 		F150A1CB2526577F0003A04B /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		F150A1CE252657940003A04B /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
+		F1800AAE2531B13E0035C296 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		F1DB6BDF252B9A7C007C9933 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		F1F7CA1B252511DF0090BFBB /* TrackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackCell.xib; sourceTree = "<group>"; };
 		F1F7CA1E252512110090BFBB /* TrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackCell.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				F1284744251CFAEA00BCE2F4 /* AppDelegate.swift */,
 				F1284746251CFAEA00BCE2F4 /* SceneDelegate.swift */,
+				F1800AB12531B1510035C296 /* Library SwiftUI Files */,
 				F148F3FA25211B880088FE50 /* Services */,
 				F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */,
 				F148F3E925211A940088FE50 /* Search */,
@@ -185,6 +188,14 @@
 				F150A1CE252657940003A04B /* TrackDetailView.swift */,
 			);
 			name = TrackDetailView;
+			sourceTree = "<group>";
+		};
+		F1800AB12531B1510035C296 /* Library SwiftUI Files */ = {
+			isa = PBXGroup;
+			children = (
+				F1800AAE2531B13E0035C296 /* Library.swift */,
+			);
+			name = "Library SwiftUI Files";
 			sourceTree = "<group>";
 		};
 		F1F7CA19252511140090BFBB /* Cell */ = {
@@ -338,6 +349,7 @@
 				F128475A251CFC3300BCE2F4 /* MainTabBarController.swift in Sources */,
 				F1284747251CFAEA00BCE2F4 /* SceneDelegate.swift in Sources */,
 				F148F40625211C3F0088FE50 /* SearchViewControllerModels.swift in Sources */,
+				F1800AAF2531B13E0035C296 /* Library.swift in Sources */,
 				F150A1CF252657940003A04B /* TrackDetailView.swift in Sources */,
 				F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */,
 			);

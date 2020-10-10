@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol MainTabBarControllerDelegate: class {
     func minimizeTrackDetailController()
@@ -30,6 +31,12 @@ class MainTabBarController: UITabBarController {
         
         searchVC?.tabBardelegate = self
         
+        let library = Library()
+        // pomes4aem SwiftUIView w chosting controller
+        let hostVC = UIHostingController(rootView: library)
+        hostVC.tabBarItem.image = #imageLiteral(resourceName: "library")
+        hostVC.tabBarItem.title = "Library"
+        
         // meniaem cvet  knopok tabBara
         tabBar.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.3764705882, alpha: 1)
         // podgryzaem viewController is storyborda a ne iz failow swift
@@ -38,7 +45,7 @@ class MainTabBarController: UITabBarController {
         // dobawliaem kontrolleru kotorue mu chotim videt w tab bare
         
         guard let search = searchVC else { return }
-        viewControllers = [generateViewController(rootViewController: search, image: #imageLiteral(resourceName: "search"), title: "Search"), generateViewController(rootViewController: ViewController(), image: #imageLiteral(resourceName: "library"), title: "Library")]
+        viewControllers =  [ hostVC, generateViewController(rootViewController: search, image: #imageLiteral(resourceName: "search"), title: "Search")]
     }
     
     private func generateViewController (rootViewController: UIViewController, image: UIImage, title: String) -> UIViewController {
@@ -122,3 +129,4 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         }
     }
 }
+
