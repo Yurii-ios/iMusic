@@ -49,23 +49,16 @@
                             <action selector="addTrackAction:" destination="pDH-eI-RQd" eventType="touchUpInside" id="2E9-uf-16P"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhf-B1-7FB">
-                        <rect key="frame" x="298" y="7" width="34" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Look"/>
-                        <connections>
-                            <action selector="showInfoAction:" destination="pDH-eI-RQd" eventType="touchUpInside" id="nvF-xo-Zpc"/>
-                        </connections>
-                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addTrackOutlet" destination="DOH-Tm-W2z" id="3Og-17-INo"/>
                 <outlet property="artistNameLabel" destination="6bR-Zx-n8x" id="amC-So-sd2"/>
                 <outlet property="collectionNameLabel" destination="jX9-hN-yC2" id="PKO-xF-dxa"/>
                 <outlet property="trackImageView" destination="pIu-tS-gvV" id="eGa-hX-OXt"/>
                 <outlet property="trackNameLabel" destination="xon-BA-ElP" id="BFR-Qo-QLg"/>
             </connections>
-            <point key="canvasLocation" x="-242.0289855072464" y="47.544642857142854"/>
+            <point key="canvasLocation" x="-468" y="-90"/>
         </tableViewCell>
     </objects>
     <resources>
