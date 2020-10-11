@@ -15,6 +15,7 @@
 		F1284751251CFAEB00BCE2F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F128474F251CFAEB00BCE2F4 /* LaunchScreen.storyboard */; };
 		F128475A251CFC3300BCE2F4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */; };
 		F128475E251D1C1B00BCE2F4 /* SearchMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F128475D251D1C1B00BCE2F4 /* SearchMusicViewController.swift */; };
+		F13905D4253337ED00821A6F /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13905D3253337ED00821A6F /* UserDefaults.swift */; };
 		F142776E251F64B500FC1BC2 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142776D251F64B500FC1BC2 /* SearchResponse.swift */; };
 		F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3E62520EE260088FE50 /* NetworkService.swift */; };
 		F148F40325211C3F0088FE50 /* SearchViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FC25211C3F0088FE50 /* SearchViewControllerPresenter.swift */; };
@@ -50,6 +51,7 @@
 		F1284752251CFAEB00BCE2F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1284759251CFC3300BCE2F4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F128475D251D1C1B00BCE2F4 /* SearchMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMusicViewController.swift; sourceTree = "<group>"; };
+		F13905D3253337ED00821A6F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F142776D251F64B500FC1BC2 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		F148F3E62520EE260088FE50 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F148F3FC25211C3F0088FE50 /* SearchViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerPresenter.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				F1F7CA1B252511DF0090BFBB /* TrackCell.xib */,
 				F1F7CA1E252512110090BFBB /* TrackCell.swift */,
+				F13905D3253337ED00821A6F /* UserDefaults.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				F1284749251CFAEA00BCE2F4 /* ViewController.swift in Sources */,
 				F142776E251F64B500FC1BC2 /* SearchResponse.swift in Sources */,
 				F14A278C252A003B009A39FC /* CMTime+Extension.swift in Sources */,
+				F13905D4253337ED00821A6F /* UserDefaults.swift in Sources */,
 				F148F40725211C3F0088FE50 /* SearchViewControllerViewController.swift in Sources */,
 				F150A1C325261A380003A04B /* FooterView.swift in Sources */,
 				F1F7CA1F252512110090BFBB /* TrackCell.swift in Sources */,

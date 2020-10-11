@@ -54,21 +54,25 @@ class TrackCell: UITableViewCell {
         trackImageView.sd_setImage(with: url, completed: nil)
     }
     @IBAction func addTrackAction(_ sender: Any) {
-        print("addTrackAction")
         let defaults = UserDefaults.standard
+        // soderzut masiw so spiskom trekov
+        guard let cell = cell else { return }
+        var listOfTracks = defaults.savedTracks()
+        listOfTracks.append(cell)
         
         // sochraniaem dannue kotorue chraniatsia w cell
-        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: cell, requiringSecureCoding: false) {
-            print("savedData: \(savedData)")
-            defaults.setValue(savedData, forKey: "tracks")
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: listOfTracks , requiringSecureCoding: false) {
+            defaults.setValue(savedData, forKey: UserDefaults.favouriteTrackKey)
         }
     }
     @IBAction func showInfoAction(_ sender: Any) {
         let defaults = UserDefaults.standard
-        if let savedTracks = defaults.object(forKey: "tracks") as? Data {
+        if let savedTracks = defaults.object(forKey: UserDefaults.favouriteTrackKey) as? Data {
             // razarchiwiryem dannue
-            if let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? SearchViewModel.Cell {
-                print(decodedTracks.trackName)
+            if let decodedTracks = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedTracks) as? [SearchViewModel.Cell] {
+                decodedTracks.map { (track)  in
+                    print(track.trackName)
+                }
             }
         }
     }
