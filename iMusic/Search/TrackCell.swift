@@ -18,6 +18,7 @@ protocol TrackCellWiewModel {
 }
 
 class TrackCell: UITableViewCell {
+
     
     // identificator
     static let reuseId = "TrackCell"
