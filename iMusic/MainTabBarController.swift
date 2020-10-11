@@ -31,7 +31,8 @@ class MainTabBarController: UITabBarController {
         
         searchVC?.tabBardelegate = self
         
-        let library = Library()
+        var library = Library()
+        library.tabBarDelegate = self
         // pomes4aem SwiftUIView w chosting controller
         let hostVC = UIHostingController(rootView: library)
         hostVC.tabBarItem.image = #imageLiteral(resourceName: "library")
