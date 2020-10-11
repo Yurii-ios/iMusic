@@ -10,7 +10,7 @@ import URLImage
 
 struct Library: View {
     
-    var tracks = UserDefaults.standard.savedTracks()
+   @State var tracks = UserDefaults.standard.savedTracks()
     
     var body: some View {
         NavigationView {
@@ -44,8 +44,12 @@ struct Library: View {
                     .padding(.leading)
                     .padding(.trailing)
                 Spacer()
-                List(tracks) { track in
+                // realizyem fynkcujy ydalenija ja4ejki s pomos4jy ForEach kotoruj imeet funkc ydalenija onDelete
+                List {
+                    ForEach(tracks) { track in
                     LibraryCell(cell: track)
+                        
+                    }.onDelete(perform: delete)
                 }
             }
             
@@ -53,6 +57,13 @@ struct Library: View {
             .navigationBarTitle("Library")
         }
         
+    }
+    func delete(at offsets: IndexSet) {
+        tracks.remove(atOffsets: offsets)
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: tracks, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            defaults.setValue(savedData, forKey: UserDefaults.favouriteTrackKey)
+        }
     }
 }
 
@@ -62,14 +73,15 @@ struct LibraryCell: View {
     
     var body: some View {
         HStack {
+            // frejmwork dlia SwiftUI kotoruj  zagryzaet image iz url
             URLImage(URL(string: cell.iconUrlString ?? "")!)
                 .frame(width: 50, height: 50)
                 .cornerRadius(4)
             VStack(alignment: .leading) {
-            Text(cell.trackName)
-            Text(cell.artistName)
+                Text(cell.trackName)
+                Text(cell.artistName)
+            }
         }
-    }
     }
 }
 
