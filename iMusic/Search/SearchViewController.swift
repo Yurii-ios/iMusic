@@ -9,11 +9,11 @@
 // otwe4aet za otobrazenie dannuch na ekran, beret dannue y iteratora
 import UIKit
 
-protocol SearchViewControllerDisplayLogic: class {
-  func displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData)
+protocol SearchDisplayLogic: class {
+  func displayData(viewModel: Search.Model.ViewModel.ViewModelData)
 }
 
-class SearchViewControllerViewController: UIViewController, SearchViewControllerDisplayLogic {
+class SearchViewController: UIViewController, SearchDisplayLogic {
 
   var interactor: SearchViewControllerBusinessLogic?
   var router: (NSObjectProtocol & SearchViewControllerRoutingLogic)?
@@ -30,17 +30,18 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
     
   // MARK: Setup
   
-  private func setup() {
-    let viewController        = self
-    let interactor            = SearchViewControllerInteractor()
-    let presenter             = SearchViewControllerPresenter()
-    let router                = SearchViewControllerRouter()
-    viewController.interactor = interactor
-    viewController.router     = router
-    interactor.presenter      = presenter
-    presenter.viewController  = viewController
-    router.viewController     = viewController
-  }
+    private func setup() {
+      let viewController        = self
+      let interactor            = SearchInteractor()
+      let presenter             = SearchPresenter()
+      let router                = SearchRouter()
+      viewController.interactor = interactor
+      viewController.router     = router
+      interactor.presenter      = presenter
+      presenter.viewController  = viewController
+      router.viewController     = viewController
+    }
+    
   
   // MARK: Routing
   
@@ -57,6 +58,14 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
     setupSearchBar()
     setupTableView()
   }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let keyWindow = UIApplication.shared.connectedScenes.filter({
+            $0.activationState == .foregroundActive
+        }).map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.filter({$0.isKeyWindow}).first
+        let tabBarVC = keyWindow?.rootViewController as? MainTabBarController
+        tabBarVC?.trackDetailView.delegate = self
+    }
     
     private func setupSearchBar() {
         navigationItem.searchController = searchController
@@ -78,7 +87,7 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
         table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
     }
   
-  func displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData) {
+  func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
     switch viewModel {
     case .displayTracks(let searchViewModel):
         self.searchViewModel = searchViewModel
@@ -94,7 +103,7 @@ class SearchViewControllerViewController: UIViewController, SearchViewController
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return searchViewModel.cells.count
     }
@@ -140,19 +149,19 @@ extension SearchViewControllerViewController: UITableViewDelegate, UITableViewDa
 
 //MARK: - UISearchBarDelegane
 
-extension SearchViewControllerViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         
         timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self]
             (_) in
-            self?.interactor?.makeRequest(request: SearchViewController.Model.Request.RequestType.getTrack(searchTerm: searchText))
+            self?.interactor?.makeRequest(request: Search.Model.Request.RequestType.getTrack(searchTerm: searchText))
         })
     }
 }
 
-extension SearchViewControllerViewController: TrackMovingDelegate {
+extension SearchViewController: TrackMovingDelegate {
     
     private func getTrack(isForwardTrack: Bool) -> SearchViewModel.Cell? {
         guard let indexPath = table.indexPathForSelectedRow else { return nil }
@@ -172,20 +181,15 @@ extension SearchViewControllerViewController: TrackMovingDelegate {
         
         table.selectRow(at: nextIndexPath, animated: true, scrollPosition: .none)
         let cellViewModel = searchViewModel.cells[nextIndexPath.row]
-        print(cellViewModel.trackName)
-        
         return cellViewModel
     }
     
     func moveBackForPreviousTrack() -> SearchViewModel.Cell? {
-        print("go back")
         return getTrack(isForwardTrack: false)
+        
     }
     
     func moveForwardForPreviousTrack() -> SearchViewModel.Cell? {
-        print("go forward")
         return getTrack(isForwardTrack: true)
     }
-    
-    
 }

@@ -14,9 +14,9 @@ protocol SearchViewControllerRoutingLogic {
 
 }
 
-class SearchViewControllerRouter: NSObject, SearchViewControllerRoutingLogic {
+class SearchRouter: NSObject, SearchViewControllerRoutingLogic {
 
-  weak var viewController: SearchViewControllerViewController?
+  weak var viewController: SearchViewController?
   
   // MARK: Routing
   

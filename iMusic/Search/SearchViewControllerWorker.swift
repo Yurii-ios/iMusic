@@ -10,6 +10,6 @@
 //pomoshnik dlia faila itarator dlia ego rozgryzki
 import UIKit
 
-class SearchViewControllerService {
+class SearchService {
 
 }

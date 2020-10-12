@@ -11,7 +11,7 @@
 import UIKit
 import SwiftUI
 
-enum SearchViewController {
+enum Search {
    
   enum Model {
     struct Request {

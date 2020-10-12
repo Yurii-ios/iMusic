@@ -10,29 +10,29 @@
 import UIKit
 
 protocol SearchViewControllerBusinessLogic {
-    func makeRequest(request: SearchViewController.Model.Request.RequestType)
+    func makeRequest(request: Search.Model.Request.RequestType)
 }
 
-class SearchViewControllerInteractor: SearchViewControllerBusinessLogic {
+class SearchInteractor: SearchViewControllerBusinessLogic {
     var networkServices = NetworkService()
     
     var presenter: SearchViewControllerPresentationLogic?
-    var service: SearchViewControllerService?
+    var service: SearchService?
     
-    func makeRequest(request: SearchViewController.Model.Request.RequestType) {
+    func makeRequest(request: Search.Model.Request.RequestType) {
         if service == nil {
-            service = SearchViewControllerService()
+            service = SearchService()
         }
         
         switch request {
         case .getTrack(let searchTerm):
             print("getTracks")
-            presenter?.presentData(response: SearchViewController.Model.Response.ResponseType.presentFooterView)
+            presenter?.presentData(response: Search.Model.Response.ResponseType.presentFooterView)
             
             // peredaem stroky s poiskom w func setewogo zaprosa
             networkServices.fetchTracks(searchText: searchTerm) { [weak self] (searchResponce) in
                 // peredaem dannue dlia ich podgotowki
-                self?.presenter?.presentData(response: SearchViewController.Model.Response.ResponseType.presentTracks(searchResponce: searchResponce))
+                self?.presenter?.presentData(response: Search.Model.Response.ResponseType.presentTracks(searchResponce: searchResponce))
             }
         }
     }

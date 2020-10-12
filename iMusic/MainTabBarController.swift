@@ -14,13 +14,10 @@ protocol MainTabBarControllerDelegate: class {
 }
 
 class MainTabBarController: UITabBarController {
-    
-    private var searchVC: SearchViewControllerViewController!
-    
     private var minimizedTopAnchorConstraint: NSLayoutConstraint!
     private var maximizedTopAnchorConstraint: NSLayoutConstraint!
     private var bottomAnchorConstraint: NSLayoutConstraint!
-    
+    let searchVC: SearchViewController = SearchViewController.loadFromStoryboard()
     let trackDetailView: TrackDetailView = TrackDetailView.loadFromNib()
     
     override func viewDidLoad() {
@@ -29,7 +26,7 @@ class MainTabBarController: UITabBarController {
         view.backgroundColor = .white
         setupTrackDetailView()
         
-        searchVC?.tabBardelegate = self
+        searchVC.tabBardelegate = self
         
         var library = Library()
         library.tabBarDelegate = self
@@ -41,12 +38,11 @@ class MainTabBarController: UITabBarController {
         // meniaem cvet  knopok tabBara
         tabBar.tintColor = #colorLiteral(red: 1, green: 0, blue: 0.3764705882, alpha: 1)
         // podgryzaem viewController is storyborda a ne iz failow swift
-        searchVC = SearchViewControllerViewController.loadFromStoryboard()
+        
         
         // dobawliaem kontrolleru kotorue mu chotim videt w tab bare
         
-        guard let search = searchVC else { return }
-        viewControllers =  [ hostVC, generateViewController(rootViewController: search, image: #imageLiteral(resourceName: "search"), title: "Search")]
+        viewControllers =  [ hostVC, generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "search"), title: "Search")]
     }
     
     private func generateViewController (rootViewController: UIViewController, image: UIImage, title: String) -> UIViewController {
@@ -99,7 +95,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
             self.view.layoutIfNeeded()
             self.tabBar.alpha = 0
             self.trackDetailView.miniTrackView.alpha = 0
-            self.trackDetailView.maximizedStackView.alpha = 1
+            self.trackDetailView.maxizedStackView.alpha = 1
         } completion: { (_) in
             
         }
@@ -123,7 +119,7 @@ extension MainTabBarController: MainTabBarControllerDelegate {
             // obnowliaem view kazdyjy milisec 4tobu ywidet animacujy pri swora4iwanii view do minim sostojanija
             self.view.layoutIfNeeded()
             self.trackDetailView.miniTrackView.alpha = 1
-            self.trackDetailView.maximizedStackView.alpha = 0
+            self.trackDetailView.maxizedStackView.alpha = 0
             self.tabBar.alpha = 1
         } completion: { (_) in
             

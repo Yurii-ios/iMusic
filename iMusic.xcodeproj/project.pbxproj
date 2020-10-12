@@ -19,19 +19,19 @@
 		F13905D8253344EA00821A6F /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = F13905D7253344EA00821A6F /* URLImage */; };
 		F142776E251F64B500FC1BC2 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F142776D251F64B500FC1BC2 /* SearchResponse.swift */; };
 		F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3E62520EE260088FE50 /* NetworkService.swift */; };
-		F148F40325211C3F0088FE50 /* SearchViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FC25211C3F0088FE50 /* SearchViewControllerPresenter.swift */; };
+		F148F40325211C3F0088FE50 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FC25211C3F0088FE50 /* SearchPresenter.swift */; };
 		F148F40425211C3F0088FE50 /* SearchViewControllerWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FD25211C3F0088FE50 /* SearchViewControllerWorker.swift */; };
-		F148F40525211C3F0088FE50 /* SearchViewControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FE25211C3F0088FE50 /* SearchViewControllerRouter.swift */; };
-		F148F40625211C3F0088FE50 /* SearchViewControllerModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FF25211C3F0088FE50 /* SearchViewControllerModels.swift */; };
-		F148F40725211C3F0088FE50 /* SearchViewControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F40025211C3F0088FE50 /* SearchViewControllerViewController.swift */; };
-		F148F40825211C3F0088FE50 /* SearchViewControllerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F40125211C3F0088FE50 /* SearchViewControllerInteractor.swift */; };
+		F148F40525211C3F0088FE50 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FE25211C3F0088FE50 /* SearchRouter.swift */; };
+		F148F40625211C3F0088FE50 /* SearchModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F3FF25211C3F0088FE50 /* SearchModels.swift */; };
+		F148F40725211C3F0088FE50 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F40025211C3F0088FE50 /* SearchViewController.swift */; };
+		F148F40825211C3F0088FE50 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F40125211C3F0088FE50 /* SearchInteractor.swift */; };
 		F148F412252129630088FE50 /* UIViewController + Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F148F411252129630088FE50 /* UIViewController + Storyboard.swift */; };
 		F14A278C252A003B009A39FC /* CMTime+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A278B252A003B009A39FC /* CMTime+Extension.swift */; };
+		F15083992534DAC40052090D /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F15083982534DAC40052090D /* TrackDetailView.xib */; };
 		F150A1C325261A380003A04B /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150A1C225261A380003A04B /* FooterView.swift */; };
-		F150A1CC2526577F0003A04B /* TrackDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F150A1CB2526577F0003A04B /* TrackDetailView.xib */; };
 		F150A1CF252657940003A04B /* TrackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F150A1CE252657940003A04B /* TrackDetailView.swift */; };
 		F1800AAF2531B13E0035C296 /* Library.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1800AAE2531B13E0035C296 /* Library.swift */; };
-		F198D43625225BFC00A4263E /* SearchViewControllerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F148F40B252121850088FE50 /* SearchViewControllerViewController.storyboard */; };
+		F198D43625225BFC00A4263E /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F148F40B252121850088FE50 /* SearchViewController.storyboard */; };
 		F1DB6BE0252B9A7C007C9933 /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB6BDF252B9A7C007C9933 /* Nib.swift */; };
 		F1F7CA1C252511DF0090BFBB /* TrackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1F7CA1B252511DF0090BFBB /* TrackCell.xib */; };
 		F1F7CA1F252512110090BFBB /* TrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F7CA1E252512110090BFBB /* TrackCell.swift */; };
@@ -55,17 +55,17 @@
 		F13905D3253337ED00821A6F /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F142776D251F64B500FC1BC2 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		F148F3E62520EE260088FE50 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		F148F3FC25211C3F0088FE50 /* SearchViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerPresenter.swift; sourceTree = "<group>"; };
+		F148F3FC25211C3F0088FE50 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		F148F3FD25211C3F0088FE50 /* SearchViewControllerWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerWorker.swift; sourceTree = "<group>"; };
-		F148F3FE25211C3F0088FE50 /* SearchViewControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerRouter.swift; sourceTree = "<group>"; };
-		F148F3FF25211C3F0088FE50 /* SearchViewControllerModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerModels.swift; sourceTree = "<group>"; };
-		F148F40025211C3F0088FE50 /* SearchViewControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerViewController.swift; sourceTree = "<group>"; };
-		F148F40125211C3F0088FE50 /* SearchViewControllerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerInteractor.swift; sourceTree = "<group>"; };
-		F148F40B252121850088FE50 /* SearchViewControllerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewControllerViewController.storyboard; sourceTree = "<group>"; };
+		F148F3FE25211C3F0088FE50 /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		F148F3FF25211C3F0088FE50 /* SearchModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModels.swift; sourceTree = "<group>"; };
+		F148F40025211C3F0088FE50 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		F148F40125211C3F0088FE50 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		F148F40B252121850088FE50 /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
 		F148F411252129630088FE50 /* UIViewController + Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Storyboard.swift"; sourceTree = "<group>"; };
 		F14A278B252A003B009A39FC /* CMTime+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMTime+Extension.swift"; sourceTree = "<group>"; };
+		F15083982534DAC40052090D /* TrackDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		F150A1C225261A380003A04B /* FooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterView.swift; sourceTree = "<group>"; };
-		F150A1CB2526577F0003A04B /* TrackDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackDetailView.xib; sourceTree = "<group>"; };
 		F150A1CE252657940003A04B /* TrackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailView.swift; sourceTree = "<group>"; };
 		F1800AAE2531B13E0035C296 /* Library.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Library.swift; sourceTree = "<group>"; };
 		F1DB6BDF252B9A7C007C9933 /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
@@ -147,13 +147,13 @@
 				F150A1CA252657110003A04B /* TrackDetailView */,
 				F150A1C1252619DC0003A04B /* FooterView */,
 				F1F7CA19252511140090BFBB /* Cell */,
-				F148F40B252121850088FE50 /* SearchViewControllerViewController.storyboard */,
-				F148F40025211C3F0088FE50 /* SearchViewControllerViewController.swift */,
-				F148F40125211C3F0088FE50 /* SearchViewControllerInteractor.swift */,
-				F148F3FC25211C3F0088FE50 /* SearchViewControllerPresenter.swift */,
-				F148F3FF25211C3F0088FE50 /* SearchViewControllerModels.swift */,
+				F148F40B252121850088FE50 /* SearchViewController.storyboard */,
+				F148F40025211C3F0088FE50 /* SearchViewController.swift */,
+				F148F40125211C3F0088FE50 /* SearchInteractor.swift */,
+				F148F3FC25211C3F0088FE50 /* SearchPresenter.swift */,
+				F148F3FF25211C3F0088FE50 /* SearchModels.swift */,
 				F148F3FD25211C3F0088FE50 /* SearchViewControllerWorker.swift */,
-				F148F3FE25211C3F0088FE50 /* SearchViewControllerRouter.swift */,
+				F148F3FE25211C3F0088FE50 /* SearchRouter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -188,7 +188,7 @@
 		F150A1CA252657110003A04B /* TrackDetailView */ = {
 			isa = PBXGroup;
 			children = (
-				F150A1CB2526577F0003A04B /* TrackDetailView.xib */,
+				F15083982534DAC40052090D /* TrackDetailView.xib */,
 				F150A1CE252657940003A04B /* TrackDetailView.swift */,
 			);
 			name = TrackDetailView;
@@ -285,11 +285,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F198D43625225BFC00A4263E /* SearchViewControllerViewController.storyboard in Resources */,
+				F15083992534DAC40052090D /* TrackDetailView.xib in Resources */,
+				F198D43625225BFC00A4263E /* SearchViewController.storyboard in Resources */,
 				F1F7CA1C252511DF0090BFBB /* TrackCell.xib in Resources */,
 				F1284751251CFAEB00BCE2F4 /* LaunchScreen.storyboard in Resources */,
 				F128474E251CFAEB00BCE2F4 /* Assets.xcassets in Resources */,
-				F150A1CC2526577F0003A04B /* TrackDetailView.xib in Resources */,
 				F128474C251CFAEA00BCE2F4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,18 +349,18 @@
 				F142776E251F64B500FC1BC2 /* SearchResponse.swift in Sources */,
 				F14A278C252A003B009A39FC /* CMTime+Extension.swift in Sources */,
 				F13905D4253337ED00821A6F /* UserDefaults.swift in Sources */,
-				F148F40725211C3F0088FE50 /* SearchViewControllerViewController.swift in Sources */,
+				F148F40725211C3F0088FE50 /* SearchViewController.swift in Sources */,
 				F150A1C325261A380003A04B /* FooterView.swift in Sources */,
 				F1F7CA1F252512110090BFBB /* TrackCell.swift in Sources */,
 				F1DB6BE0252B9A7C007C9933 /* Nib.swift in Sources */,
-				F148F40325211C3F0088FE50 /* SearchViewControllerPresenter.swift in Sources */,
-				F148F40525211C3F0088FE50 /* SearchViewControllerRouter.swift in Sources */,
+				F148F40325211C3F0088FE50 /* SearchPresenter.swift in Sources */,
+				F148F40525211C3F0088FE50 /* SearchRouter.swift in Sources */,
 				F1284745251CFAEA00BCE2F4 /* AppDelegate.swift in Sources */,
 				F148F40425211C3F0088FE50 /* SearchViewControllerWorker.swift in Sources */,
-				F148F40825211C3F0088FE50 /* SearchViewControllerInteractor.swift in Sources */,
+				F148F40825211C3F0088FE50 /* SearchInteractor.swift in Sources */,
 				F128475A251CFC3300BCE2F4 /* MainTabBarController.swift in Sources */,
 				F1284747251CFAEA00BCE2F4 /* SceneDelegate.swift in Sources */,
-				F148F40625211C3F0088FE50 /* SearchViewControllerModels.swift in Sources */,
+				F148F40625211C3F0088FE50 /* SearchModels.swift in Sources */,
 				F1800AAF2531B13E0035C296 /* Library.swift in Sources */,
 				F150A1CF252657940003A04B /* TrackDetailView.swift in Sources */,
 				F148F3E72520EE260088FE50 /* NetworkService.swift in Sources */,

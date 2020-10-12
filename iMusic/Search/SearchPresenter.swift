@@ -10,13 +10,13 @@
 import UIKit
 
 protocol SearchViewControllerPresentationLogic {
-    func presentData(response: SearchViewController.Model.Response.ResponseType)
+    func presentData(response: Search.Model.Response.ResponseType)
 }
 
-class SearchViewControllerPresenter: SearchViewControllerPresentationLogic {
-    weak var viewController: SearchViewControllerDisplayLogic?
+class SearchPresenter: SearchViewControllerPresentationLogic {
+    weak var viewController: SearchDisplayLogic?
     
-    func presentData(response: SearchViewController.Model.Response.ResponseType) {
+    func presentData(response: Search.Model.Response.ResponseType) {
         switch response {
         case .presentTracks(let searchResults):
             // sozdaem ja4ejki s informacuej
@@ -25,9 +25,9 @@ class SearchViewControllerPresenter: SearchViewControllerPresentationLogic {
             }) ?? []
             let searchViewModel = SearchViewModel(cells: cells)
             print("presenter presenter")
-            viewController?.displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData.displayTracks(searchViewModel: searchViewModel))
+            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayTracks(searchViewModel: searchViewModel))
         case .presentFooterView:
-            viewController?.displayData(viewModel: SearchViewController.Model.ViewModel.ViewModelData.displayFooterView)
+            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayFooterView)
         }
     }
 

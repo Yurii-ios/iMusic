@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller View Controller-->
+        <!--Search View Controller-->
         <scene sceneID="KHu-Tt-E9T">
             <objects>
-                <viewController id="AWz-ol-XQM" customClass="SearchViewControllerViewController" customModule="iMusic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AWz-ol-XQM" customClass="SearchViewController" customModule="iMusic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2ho-1f-7Ol">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

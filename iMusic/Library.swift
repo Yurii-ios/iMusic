@@ -25,8 +25,7 @@ struct Library: View {
                             self.track = self.tracks[0]
                             self.tabBarDelegate?.maximizeTrackDetailController(viewModel: self.track)
                         }, label: {
-                            Image(systemName: "play.fill")
-                                .frame(width: geometry.size.width / 2 - 10, height: 50)
+                            Image(systemName: "play.fill")                                .frame(width: geometry.size.width / 2 - 10, height: 50)
                                 .accentColor(Color.init(#colorLiteral(red: 0.9369474649, green: 0.3679848909, blue: 0.426604867, alpha: 1)))
                                 .background(Color.init(#colorLiteral(red: 0.9218373299, green: 0.9163574576, blue: 0.9260496497, alpha: 1)))
                                 .cornerRadius(10)
@@ -54,7 +53,12 @@ struct Library: View {
                     ForEach(tracks) { track in
                         LibraryCell(cell: track)
                             .gesture(LongPressGesture().onEnded({ _ in
-                                print("njnjn")
+                                // poly4aem dostyp k osnownomy ekrany
+                                let keyWindow = UIApplication.shared.connectedScenes.filter({
+                                    $0.activationState == .foregroundActive
+                                }).map({$0 as? UIWindowScene}).compactMap({$0}).first?.windows.filter({$0.isKeyWindow}).first
+                                let tabBarVC = keyWindow?.rootViewController as? MainTabBarController
+                                tabBarVC?.trackDetailView.delegate = self
                                 // peredaem dannue s ja4ejki w peremennyjy
                                 self.track = track
                                 showAlert = true
@@ -131,4 +135,38 @@ struct Library_Previews: PreviewProvider {
                 .previewDevice("iPhone 11")
         }
     }
+}
+
+extension Library: TrackMovingDelegate {
+    func moveBackForPreviousTrack() -> SearchViewModel.Cell? {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return nil }
+        
+        var nextTrack: SearchViewModel.Cell
+        
+        if myIndex - 1 == -1 {
+            nextTrack = tracks[tracks.count - 1]
+        } else {
+            nextTrack = tracks[myIndex - 1]
+        }
+        self.track = nextTrack
+        return nextTrack
+    }
+
+    func moveForwardForPreviousTrack() -> SearchViewModel.Cell? {
+        let index = tracks.firstIndex(of: track)
+        guard let myIndex = index else { return nil }
+        
+        var nextTrack: SearchViewModel.Cell
+        
+        if myIndex + 1 == tracks.count {
+            nextTrack = tracks[0]
+        } else {
+            nextTrack = tracks[myIndex + 1]
+        }
+        self.track = nextTrack
+        return nextTrack
+    }
+    
+    
 }
